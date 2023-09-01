@@ -11,11 +11,25 @@
     <link href="css/style.css" rel="stylesheet">
   </head>
   <body>
-    {% for product in product_objects %}
-      <div>
-        {{ product.title }}
+    <div class="container">
+      <div class="row">
+        {% for product in product_objects %}
+          <div class="col-md-3">
+            <div class="card">
+              <img src="{{ product.image }}" class="card-img-top" width="300" height="300">
+              <div class="card-body">
+                <div class="card-title">
+                  {{ product.title }}
+                </div>
+                <div class="card-text">
+                  {{ product.price }}
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
       </div>
-    {% endfor %}
+    </div>
   </body>
 </html>
 
