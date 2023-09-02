@@ -1,0 +1,50 @@
+{% load django_bootstrap5 %}
+{% load static %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-12">
+              <img src="{{ product_object.image }}" class="card-img-top" width="400" height="400">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="row">
+            <div class=col-md-12>
+              {{ product_object.title }}
+            </div>
+          </div>
+          <div class="row">
+            <div class=col-md-12>
+              {{ product_object.price }}
+            </div>
+          </div>
+          <div class="row">
+            <div class=col-md-12>
+              {{ product_object.discount_price }}
+            </div>
+          </div>
+          <div class="row">
+            <div class=col-md-12>
+              {{ product_object.description }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+

@@ -10,6 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{% static 'shop/style.css' %}" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   </head>
   <body>
     <div class="container">
@@ -39,12 +40,46 @@
                 <div class="card-text">
                   $ {{ product.price }}
                 </div>
+                <a class="btn btn-warning" href="/shop/detail/{{ product.id }}">View</a>
+                <button class="btn atc btn-warning" href="">Add To Cart</button>
               </div>
             </div>
           </div>
         {% endfor %}
       </div>
+      <div class="row">
+        <div class="col-md-4 offset-md-3">
+          <ul class="pagination">
+            <div class="container">
+              Page: {{ product_objects.number }} of {{ product_objects.paginator.num_pages }}
+            </div>
+            {% if product_objects.has_previous %}
+              <li class="page-item active">
+                <a href="?page={{ product_objects.previous_page_number }}" class="btn btn-primary page-link">Previous</a>
+              </li>
+            {% endif %}
+            <li class="page-item active">
+              <a href="?page={{ product_objects.number }}" class="btn btn-primary page-link">Current</a>
+            </li>
+            {% if product_objects.has_next %}
+              <li class="page-item">
+                <a href="?page={{ product_objects.next_page_number }}" class="btn btn-primary page-link">Next</a>
+              </li>
+              {% endif %}
+          </ul>
+        </div>
+      </div>
     </div>
   </body>
+  <script type="text/javascript">
+    console.log('This is working');
+    if (localStorage.getItem('cart') == null) {
+      var cart = {};
+    }
+    else {
+      cart = JSON.parse(localStorage.getItem('cart'));
+    }
+    $(document).on('click', '.atc')
+  </script>
 </html>
 
